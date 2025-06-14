@@ -10,25 +10,26 @@
   <div id="ton-connect-button"></div>
 
   <script type="module">
-    import { TonConnectUI } from "https://unpkg.com/@tonconnect/ui@latest";
+  import TonConnectUI from "https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.esm.js";
 
-    Telegram.WebApp.ready();
-    console.log("Telegram WebApp ready");
+  console.log("Script loaded");
+  Telegram.WebApp.ready();
+  console.log("Telegram WebApp ready");
 
-    const tonConnectUI = new TonConnectUI({
-      manifestUrl: "https://tg-miniapp-two.vercel.app/tonconnect-manifest.json",
-      buttonRootId: "ton-connect-button"
-    });
+  const tonConnectUI = new TonConnectUI({
+    manifestUrl: "https://tg-miniapp-two.vercel.app/tonconnect-manifest.json",
+    buttonRootId: "ton-connect-button"
+  });
 
-    tonConnectUI.onStatusChange(wallet => {
-      console.log("Wallet status changed:", wallet);
-      if (wallet) {
-        Telegram.WebApp.sendData(JSON.stringify({
-          action: "wallet_connected",
-          address: wallet.account.address
-        }));
-      }
-    });
-  </script>
+  tonConnectUI.onStatusChange(wallet => {
+    console.log("Wallet status changed:", wallet);
+    if (wallet) {
+      Telegram.WebApp.sendData(JSON.stringify({
+        action: "wallet_connected",
+        address: wallet.account.address
+      }));
+    }
+  });
+</script>
 </body>
 </html>
