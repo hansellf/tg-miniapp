@@ -9,12 +9,11 @@
   <h2>Sticker Shop</h2>
   <div id="ton-connect-button"></div>
 
-  <script type="module">
-  import TonConnectUI from "https://cdn.jsdelivr.net/npm/@tonconnect/ui@2.1.0/dist/tonconnect-ui.esm.js";
-
+  <script src="https://cdn.jsdelivr.net/npm/@tonconnect/ui@2.1.0/dist/tonconnect-ui.min.js"></script>
+<script>
   Telegram.WebApp.ready();
 
-  const tonConnectUI = new TonConnectUI({
+  const tonConnectUI = new TonConnectUI.TonConnectUI({
     manifestUrl: "https://tg-miniapp-two.vercel.app/tonconnect-manifest.json",
     buttonRootId: "ton-connect-button"
   });
